@@ -1,5 +1,5 @@
 # dev_Tome_OGT
-Improve the prediction OGT of psychrophiles
+Improve the prediction of OGT on psychrophiles
 
 ### To do
 1. Update OGTs in our dataset with ones from Bowman
