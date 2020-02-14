@@ -1,0 +1,6 @@
+rmse:5.695
+r2:0.7118
+spearmanr:0.6782
+p_value:0.0
+pearonr:0.8752
+p_pearsonr:0.0
