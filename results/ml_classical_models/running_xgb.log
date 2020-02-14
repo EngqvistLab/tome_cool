@@ -1,0 +1,26 @@
+(6020, 401)
+(6020, 400)
+Doing XGBoost
+Initialize kFold
+0 Training
+[15:22:34] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+0 Test
+0 Saving
+1 Training
+[15:22:48] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+1 Test
+1 Saving
+2 Training
+[15:23:01] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+2 Test
+2 Saving
+3 Training
+[15:23:14] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+3 Test
+3 Saving
+4 Training
+[15:23:27] WARNING: /workspace/src/objective/regression_obj.cu:152: reg:linear is now deprecated in favor of reg:squarederror.
+4 Test
+4 Saving
+r2: 0.8268477026473339
+ 
