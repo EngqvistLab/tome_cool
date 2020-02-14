@@ -1,14 +1,12 @@
-# dev_Tome_OGT
-Improve the prediction of OGT on psychrophiles
+### Usage
+For a given list of organisms:
+```
+python predOGT.py --indir test/ --out test/predicted_ogt_bayes.csv
+```
 
-### To do
-#### Prepare training dataset
-1. Update OGTs in our dataset with ones from Bowman
-2. Collect proteoms for those ones from Bowman that are not present in our current dataset
-3. Add 71 organisms that are not in the engqvist data and are growing below 20C
-3. Down samplling ones with a OGT of 37
-4. Extract 2-mer features
+   
+For one organism
 
-#### Machine learning. 
-4. Run model selection
-5. Try GradientBoost
+```
+python predOGT.py --fasta test/caldanaerobacter_subterraneus.fasta
+```
