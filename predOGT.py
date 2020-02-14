@@ -64,66 +64,6 @@ def load_means_stds(predictor):
         features.append(cont[0])
     return means,stds,features
 
-def train_model():
-    from sklearn import svm
-    from sklearn.metrics import r2_score
-    from scipy.stats import spearmanr,pearsonr
-    from sklearn.metrics import mean_squared_error as MSE
-
-    path = os.path.dirname(os.path.realpath(__file__)).replace('core','')
-    predictor = os.path.join(path,'model/OGT_svr.pkl')
-    def get_standardizer(X):
-        mean,std=list(),list()
-        for i in range(X.shape[1]):
-            mean.append(np.mean(X[:,i]))
-            std.append(float(np.var(X[:,i]))**0.5)
-        return mean,std
-
-    def standardize(X):
-        Xs=np.zeros_like(X)
-        n_sample,n_features=X.shape[0],X.shape[1]
-        for i in range(n_features):
-            Xs[:,i]=(X[:,i]-np.mean(X[:,i]))/float(np.var(X[:,i]))**0.5
-        return Xs
-
-    # load training dataset
-    trainfile = os.path.join(path,'data/train.csv')
-    df = pd.read_csv(trainfile,index_col=0)
-    X = df.values[:,:-1]
-    Y = df.values[:,-1].ravel()
-    features = df.columns[:-1]
-
-    Xs = standardize(X)
-    model = svm.SVR(kernel='rbf',C = 64.0, epsilon = 1.0)
-    model.fit(Xs,Y)
-
-    # get model performance:
-    p = model.predict(Xs)
-    rmse = np.sqrt(MSE(Y,p))
-    r2 = r2_score(Y,p)
-    r_spearman = spearmanr(p,Y)
-    r_pearson = pearsonr(p,Y)
-
-    print('A new model has beed successfully trained.')
-    print('Model performance:')
-    print('        RMSE: '+ str(rmse))
-    print('          r2: ' + str(r2))
-    print('  Pearson r:' + str(r_pearson))
-    print('  Spearman r:' + str(r_spearman))
-    print('')
-
-    # save model
-    print('Saving the new model to replace the original one...')
-    joblib.dump(model, predictor)
-
-    fea = open(predictor.replace('pkl','f'),'w')
-    means, stds = get_standardizer(X)
-    fea.write('#Feature_name\tmean\tstd\n')
-    for i in range(len(means)):
-        fea.write('{0}\t{1}\t{2}\n'.format(features[i], means[i], stds[i]))
-    fea.close()
-    print('Done!')
-    print('')
 
 def load_model():
     path = os.path.dirname(os.path.realpath(__file__)).replace('core','')
@@ -214,9 +154,6 @@ if __name__ == '__main__':
     fasta files. Each fasta file is a proteome. Required for the prediction of OGT\
     for a list of microorganisms. Important: Fasta file names much end with .fasta',
     metavar='',default=None)
-
-    parser_ogt.add_argument('--train',help='train the model again',
-    action='store_true')
 
     parser_ogt.add_argument('-o','--out',help='out file name',
     type=argparse.FileType('w', encoding='UTF-8'),default=sys.stdout,metavar='')
