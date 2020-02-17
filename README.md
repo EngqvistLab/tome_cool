@@ -1,9 +1,12 @@
 ### Usage
+1. download repo
 ```
-git clone
+git clone git@github.com:Gangl2016/dev_Tome_OGT.git
 ```
 
-Use `python predOGT.py -h` to get following help messages:
+2. change your directory to repo's
+
+3. Use `python predOGT.py -h` to get following help messages:
 ```
 usage: predOGT.py [-h] [--fasta] [--indir] [-o] [-p]
 
