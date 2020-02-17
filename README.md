@@ -1,4 +1,8 @@
 ### Usage
+```
+git clone
+```
+
 Use `python predOGT.py -h` to get following help messages:
 ```
 usage: predOGT.py [-h] [--fasta] [--indir] [-o] [-p]
