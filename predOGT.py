@@ -158,7 +158,7 @@ if __name__ == '__main__':
     parser_ogt.add_argument('-o','--out',help='out file name',
     type=argparse.FileType('w', encoding='UTF-8'),default=sys.stdout,metavar='')
 
-    parser_ogt.add_argument('-p','--threads',default=1,help='number of threads \
+    parser_ogt.add_argument('-p','--threads',default=1,type=int,help='number of threads \
     used for feature extraction, default is 1. if set to 0, it will use all cpus available',
     metavar='')
     
